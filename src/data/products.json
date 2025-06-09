@@ -1,0 +1,67 @@
+[
+  {
+    "id": 1,
+    "title": "The Last of Us Part II",
+    "price": 59.99,
+    "category": "Game CDs",
+    "platform": "PS5",
+    "description": "Award-winning action-adventure game set in a post-apocalyptic world. Physical disc for PS5.",
+    "images": [
+      "https://images7.alphacoders.com/124/thumbbig-1244875.webp",
+      "https://images2.alphacoders.com/136/thumbbig-1363269.webp",
+      "https://images6.alphacoders.com/124/thumbbig-1245907.webp"
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Halo Infinite",
+    "price": 49.99,
+    "category": "Game CDs",
+    "platform": "Xbox",
+    "description": "Join Master Chief in an epic new journey. Physical disc for Xbox Series X.",
+    "images": [
+      "https://picfiles.alphacoders.com/372/thumb-1920-372364.jpg",
+      "https://images2.alphacoders.com/981/thumb-440-981732.webp",
+      "https://picfiles.alphacoders.com/587/thumb-1920-587904.jpg"
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Cyberpunk 2077",
+    "price": 39.99,
+    "category": "Game CDs",
+    "platform": "PC",
+    "description": "Explore Night City in this open-world RPG. DVD-ROM for PC installation.",
+    "images": [
+      "https://images2.alphacoders.com/131/thumb-440-1317789.webp",
+      "https://images2.alphacoders.com/133/thumb-440-1330768.webp",
+      "https://images4.alphacoders.com/133/thumb-440-1330108.webp"
+    ]
+  },
+  {
+    "id": 4,
+    "title": "PlayStation 5 Console",
+    "price": 499.99,
+    "category": "Consoles",
+    "platform": "PS5",
+    "description": "Next-gen console with ultra-fast SSD and stunning graphics.",
+    "images": [
+      "https://images.unsplash.com/photo-1606144042614-b2417e99c4e3?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://images.unsplash.com/photo-1709587797077-7a2c94411514?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "https://t3.ftcdn.net/jpg/05/25/37/30/240_F_525373026_mEvYH9lgyphjWukE2aiqp4O20xSTiZ0g.jpg"
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Xbox Wireless Controller",
+    "price": 64.99,
+    "category": "Accessories",
+    "platform": "Xbox",
+    "description": "Ergonomic wireless controller with hybrid D-pad.",
+    "images": [
+      "https://images.unsplash.com/photo-1631896928983-2c94ea6f97e8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8eGJveCUyMGNvbnRyb2xsZXJ8ZW58MHx8MHx8fDA%3D",
+      "https://images.unsplash.com/photo-1636908067903-abaedc57ab2b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8eGJveCUyMGNvbnRyb2xsZXJ8ZW58MHx8MHx8fDA%3D",
+      "https://images.unsplash.com/photo-1708235094342-2c550599223f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8eGJveCUyMGNvbnRyb2xsZXJ8ZW58MHx8MHx8fDA%3D"
+    ]
+  }
+]
