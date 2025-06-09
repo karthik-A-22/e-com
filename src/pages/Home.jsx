@@ -16,14 +16,7 @@ const Home = () => {
     setProducts(productsData);
   }, []);
 
-  const categories = [
-    "All",
-    "Tools",
-    "Power Tools",
-    "Game CDs",
-    "Consoles",
-    "Accessories",
-  ];
+  const categories = ["All", "Game CDs", "Consoles", "Accessories"];
 
   const filtered = products
     .filter((product) =>
