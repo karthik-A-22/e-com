@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { Form, Button, Container, Alert, Card } from "react-bootstrap";
 
 const Signup = () => {
   const { signup } = useAuth();
@@ -22,43 +23,61 @@ const Signup = () => {
   };
 
   return (
-    <div className="container" style={{ maxWidth: "400px", marginTop: "40px" }}>
-      <h2>Signup</h2>
-      <form onSubmit={handleSubmit}>
-        <label>Name</label>
-        <input
-          type="text"
-          required
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          style={{ width: "100%", padding: "8px", marginBottom: "12px" }}
-        />
+    <Container className="mt-3 d-flex justify-content-center">
+      <Card style={{ width: "100%", maxWidth: "400px" }} className="p-4 shadow">
+        <Card.Body>
+          <h2 className="text-center mb-4">Signup</h2>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group className="mb-3" controlId="formName">
+              <Form.Label>Name</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Enter your name"
+                required
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+            </Form.Group>
 
-        <label>Email</label>
-        <input
-          type="email"
-          required
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          style={{ width: "100%", padding: "8px", marginBottom: "12px" }}
-        />
+            <Form.Group className="mb-3" controlId="formEmail">
+              <Form.Label>Email address</Form.Label>
+              <Form.Control
+                type="email"
+                placeholder="Enter email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </Form.Group>
 
-        <label>Password</label>
-        <input
-          type="password"
-          required
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          style={{ width: "100%", padding: "8px", marginBottom: "12px" }}
-        />
+            <Form.Group className="mb-3" controlId="formPassword">
+              <Form.Label>Password</Form.Label>
+              <Form.Control
+                type="password"
+                placeholder="Password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </Form.Group>
 
-        {error && <p style={{ color: "red" }}>{error}</p>}
+            {error && <Alert variant="danger">{error}</Alert>}
 
-        <button type="submit" style={{ padding: "10px 20px" }}>
-          Signup
-        </button>
-      </form>
-    </div>
+            <div className="d-grid mb-3">
+              <Button variant="success" type="submit">
+                Signup
+              </Button>
+            </div>
+
+            <div className="text-center">
+              <small>
+                Already have an account? <Link to="/login">Login</Link>
+              </small>
+            </div>
+          </Form>
+        </Card.Body>
+      </Card>
+    </Container>
   );
 };
 
