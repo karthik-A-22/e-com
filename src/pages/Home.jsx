@@ -33,7 +33,7 @@ const Home = () => {
   });
 
   return (
-    <Container>
+    <Container fluid className="pt-3">
       {/* Responsive Filter Controls */}
       <Row className="mb-4">
         <Col xs={12} md={4} className="mb-2">
