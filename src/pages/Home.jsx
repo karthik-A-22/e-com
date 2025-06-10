@@ -33,7 +33,7 @@ const Home = () => {
   });
 
   return (
-    <Container fluid className="pt-3">
+    <Container>
       {/* Responsive Filter Controls */}
       <Row className="mb-4">
         <Col xs={12} md={4} className="mb-2">
@@ -52,9 +52,17 @@ const Home = () => {
       </Row>
 
       {/* Product Cards */}
-      <Row>
+      <Row className="g-2">
         {sorted.map((product) => (
-          <Col key={product.id} xs={12} sm={6} md={4} lg={3} className="mb-4">
+          <Col
+            key={product.id}
+            xs={12}
+            sm={6}
+            md={4}
+            lg={2}
+            xl={2}
+            className="d-flex justify-content-center"
+          >
             <ProductCard product={product} />
           </Col>
         ))}

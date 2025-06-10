@@ -1,0 +1,40 @@
+/* Thumbnail Styling */
+.product-thumbnail {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+}
+
+.product-thumbnail:hover {
+  transform: scale(1.05);
+}
+
+.product-thumbnail.active {
+  border: 2px solid #0d6efd;
+  box-shadow: 0 0 8px rgba(13, 110, 253, 0.5);
+  transform: scale(1.05);
+}
+
+/* Main Image Styling - clear, responsive, consistent aspect ratio */
+.main-product-image {
+  width: 100%;
+  max-height: 400px;
+  aspect-ratio: 4 / 3; /* Maintain aspect ratio */
+  object-fit: fill;   /* Crop to fill while keeping the subject */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: block;
+  image-rendering: auto;
+  image-rendering: crisp-edges; /* Fallback */
+}
+
+@media (max-width: 576px) {
+  .main-product-image {
+    aspect-ratio: 1 / 1; /* Square for mobile */
+    max-height: 300px;
+  }
+}

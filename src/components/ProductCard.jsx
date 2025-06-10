@@ -15,7 +15,7 @@ const ProductCard = ({ product }) => {
           <Card.Text className="product-price">${price.toFixed(2)}</Card.Text>
         </div>
         <Link to={`/product/${id}`} className="mt-2">
-          <Button variant="primary" className="w-100">
+          <Button variant="primary" className="w-100 btn-sm">
             View Details
           </Button>
         </Link>

@@ -13,7 +13,7 @@ const AppNavbar = () => {
 
   return (
     <Navbar bg="dark" variant="dark" expand="md" sticky="top">
-      <Container fluid>
+      <Container>
         <Navbar.Brand
           as={Link}
           to="/"
@@ -25,7 +25,7 @@ const AppNavbar = () => {
             height="30"
             className="d-inline-block align-top"
           />
-          <span className="d-none d-sm-inline">Mini E-Shop</span>{" "}
+          <span className="d-none d-sm-inline">Mini G-Shop</span>{" "}
           {/* Hide text on very small screens */}
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="main-navbar" />

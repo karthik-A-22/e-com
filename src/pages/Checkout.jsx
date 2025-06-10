@@ -1,8 +1,9 @@
+import { useState } from "react";
 import { useCart } from "../context/CartContext";
 
 const Checkout = () => {
   const { cartItems, getCartTotal, clearCart } = useCart();
-  const [form, setForm] = useState({
+const [form, setForm] = useState({
     name: "",
     address: "",
     phone: "",

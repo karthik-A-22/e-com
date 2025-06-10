@@ -1,4 +1,3 @@
-import React from "react";
 import { Carousel } from "react-bootstrap";
 
 const ImageCarousel = ({ images, interval = 3000 }) => {
@@ -20,8 +19,8 @@ const ImageCarousel = ({ images, interval = 3000 }) => {
             className="d-block w-100"
             style={{
               height: "250px",
-              objectFit: "cover",
-              borderRadius: "10px",
+              objectFit: "fill",
+              borderRadius: "5px",
             }}
             draggable={false}
           />
