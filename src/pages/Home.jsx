@@ -33,20 +33,20 @@ const Home = () => {
   });
 
   return (
-    <Container>
+    <Container className="mt-3">
       {/* Responsive Filter Controls */}
-      <Row className="mb-4">
-        <Col xs={12} md={4} className="mb-2">
+      <Row className="mb-4 gx-2 gy-2">
+        <Col xs={12} md={4}>
           <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
         </Col>
-        <Col xs={12} md={4} className="mb-2">
+        <Col xs={12} md={4}>
           <CategoryFilter
             categories={categories}
             selected={categoryFilter}
             onChange={setCategoryFilter}
           />
         </Col>
-        <Col xs={12} md={4} className="mb-2">
+        <Col xs={12} md={4}>
           <SortDropdown sortOption={sortOption} setSortOption={setSortOption} />
         </Col>
       </Row>
@@ -56,11 +56,11 @@ const Home = () => {
         {sorted.map((product) => (
           <Col
             key={product.id}
-            xs={12}
-            sm={6}
-            md={4}
-            lg={2}
-            xl={2}
+            xs={6} // 2 per row on mobile
+            sm={6} // 2 per row on small devices
+            md={4} // 3 per row on medium
+            lg={3} // 4 per row on large
+            xl={2} // 6 per row on extra large
             className="d-flex justify-content-center"
           >
             <ProductCard product={product} />
