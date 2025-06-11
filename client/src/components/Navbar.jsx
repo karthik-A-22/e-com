@@ -25,7 +25,7 @@ const AppNavbar = () => {
         <Navbar.Brand
           as={Link}
           to="/"
-          className="d-flex align-items-center gap-2"
+          className="d-flex align-items-center gap-1"
         >
           <img
             src={logo}
@@ -39,7 +39,7 @@ const AppNavbar = () => {
         {/* Toggler for mobile */}
         <Navbar.Toggle aria-controls="main-navbar" />
         <Navbar.Collapse id="main-navbar" className="justify-content-end">
-          <Nav className="align-items-center gap-3">
+          <Nav className="align-items-center gap-2">
             {/* Cart Button */}
             <Nav.Link
               as={Link}
