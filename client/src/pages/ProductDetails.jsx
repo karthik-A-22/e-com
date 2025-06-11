@@ -9,7 +9,7 @@ const ProductDetails = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [mainImage, setMainImage] = useState("");
-  const { addToCart } = useCart();
+  const { cartItems, addToCart, decrementQuantity } = useCart();
 
   useEffect(() => {
     const prod = productsData.find((p) => p.id === parseInt(id));
@@ -23,6 +23,10 @@ const ProductDetails = () => {
 
   if (product === null) return <Container>Loading...</Container>;
   if (product === false) return <Container>Product not found</Container>;
+
+  // Get product quantity from cart
+  const cartItem = cartItems.find((item) => item.id === product.id);
+  const quantity = cartItem ? cartItem.quantity : 0;
 
   return (
     <Container className="mt-4">
@@ -104,14 +108,33 @@ const ProductDetails = () => {
           <hr />
           <p>{product.description}</p>
 
-          <Button
-            variant="dark"
-            onClick={() => addToCart(product)}
-            className="mt-3"
-            disabled={product.stock === 0}
-          >
-            {product.stock === 0 ? "Out of Stock" : "Add to Cart"}
-          </Button>
+          {/* Add to Cart / Quantity Controls */}
+          {product.stock === 0 ? (
+            <Button variant="secondary" disabled className="mt-3">
+              Out of Stock
+            </Button>
+          ) : quantity > 0 ? (
+            <div className="d-flex align-items-center gap-2 mt-3">
+              <Button
+                variant="outline-dark"
+                onClick={() => decrementQuantity(product.id)}
+              >
+                -
+              </Button>
+              <span className="fw-bold">{quantity}</span>
+              <Button variant="outline-dark" onClick={() => addToCart(product)}>
+                +
+              </Button>
+            </div>
+          ) : (
+            <Button
+              variant="dark"
+              onClick={() => addToCart(product)}
+              className="mt-3"
+            >
+              Add to Cart
+            </Button>
+          )}
         </Col>
       </Row>
     </Container>
