@@ -1,11 +1,5 @@
 /* AppNavbar.css */
 
-.container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 20px;
-}
-
 .navbar {
   display: flex;
   justify-content: space-between;
