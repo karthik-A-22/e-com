@@ -11,13 +11,13 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const success = login(email, password);
-    if (success) {
+    const result = await login(email, password);
+    if (result.success) {
       navigate("/");
     } else {
-      setError("Invalid email or password");
+      setError(result.message);
     }
   };
 

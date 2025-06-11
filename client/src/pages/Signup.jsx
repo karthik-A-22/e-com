@@ -12,13 +12,13 @@ const Signup = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const success = signup(name, email, password);
-    if (success) {
-      navigate("/");
+    const result = await signup(name, email, password);
+    if (result.success) {
+      navigate("/login");
     } else {
-      setError("User with this email already exists");
+      setError(result.message);
     }
   };
 

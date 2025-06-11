@@ -1,56 +1,76 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
+import axios from "../api/axiosConfig"; // 👈 import from central config
 
 const AuthContext = createContext();
-
 export const useAuth = () => useContext(AuthContext);
 
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [token, setToken] = useState(null);
 
-  // On mount, check if user is saved in localStorage
   useEffect(() => {
     const savedUser = localStorage.getItem("user");
-    if (savedUser) setUser(JSON.parse(savedUser));
+    const savedToken = localStorage.getItem("token");
+
+    if (savedUser && savedToken) {
+      setUser(JSON.parse(savedUser));
+      setToken(savedToken);
+    }
   }, []);
 
-  const login = (email, password) => {
-    // Mock user validation (replace with real API call later)
-    const storedUsers = JSON.parse(localStorage.getItem("users") || "[]");
-    const existingUser = storedUsers.find(
-      (u) => u.email === email && u.password === password
-    );
+  const login = async (email, password) => {
+    try {
+      const res = await axios.post("/auth/login", { email, password });
 
-    if (existingUser) {
-      setUser(existingUser);
-      localStorage.setItem("user", JSON.stringify(existingUser));
-      return true; // login successful
+      const { user, token } = res.data;
+      setUser(user);
+      setToken(token);
+      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("token", token);
+
+      return { success: true };
+    } catch (err) {
+      console.error("Login failed:", err.response?.data?.message);
+      return {
+        success: false,
+        message: err.response?.data?.message || "Login failed",
+      };
     }
-    return false; // login failed
   };
 
-  const signup = (name, email, password) => {
-    let storedUsers = JSON.parse(localStorage.getItem("users") || "[]");
+  const signup = async (name, email, password) => {
+    try {
+      const res = await axios.post("/auth/signup", {
+        name,
+        email,
+        password,
+      });
 
-    // Check if email already exists
-    if (storedUsers.some((u) => u.email === email)) {
-      return false; // user already exists
+      const { user, token } = res.data;
+      setUser(user);
+      setToken(token);
+      localStorage.setItem("user", JSON.stringify(user));
+      localStorage.setItem("token", token);
+
+      return { success: true };
+    } catch (err) {
+      console.error("Signup failed:", err.response?.data?.message);
+      return {
+        success: false,
+        message: err.response?.data?.message || "Signup failed",
+      };
     }
-
-    const newUser = { id: Date.now(), name, email, password };
-    storedUsers.push(newUser);
-    localStorage.setItem("users", JSON.stringify(storedUsers));
-    setUser(newUser);
-    localStorage.setItem("user", JSON.stringify(newUser));
-    return true;
   };
 
   const logout = () => {
     setUser(null);
+    setToken(null);
     localStorage.removeItem("user");
+    localStorage.removeItem("token");
   };
 
   return (
-    <AuthContext.Provider value={{ user, login, signup, logout }}>
+    <AuthContext.Provider value={{ user, token, login, signup, logout }}>
       {children}
     </AuthContext.Provider>
   );
