@@ -1,22 +1,16 @@
-import { Navbar, Nav, Container, Button, Dropdown } from "react-bootstrap";
-import { Link, useNavigate } from "react-router-dom";
+import { Navbar, Nav, Container } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
 import logo from "../assets/logo_ecom.png";
-import { FaShoppingBasket } from "react-icons/fa"; // ✅ Basket Icon
+import { FaShoppingBasket } from "react-icons/fa";
 import "../styles/AppNavbar.css";
 
 const AppNavbar = () => {
   const { cartItems } = useCart();
   const { user, logout } = useAuth();
-  const navigate = useNavigate();
 
   const totalQuantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
-
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
-  };
 
   return (
     <Navbar
@@ -47,8 +41,13 @@ const AppNavbar = () => {
         <Navbar.Collapse id="main-navbar" className="justify-content-end">
           <Nav className="align-items-center gap-3">
             {/* Cart Button */}
-            <Nav.Link as={Link} to="/cart" className="position-relative">
+            <Nav.Link
+              as={Link}
+              to="/cart"
+              className="position-relative d-flex align-items-center gap-1"
+            >
               <FaShoppingBasket size={22} />
+              <span>Cart</span>
               {totalQuantity > 0 && (
                 <span
                   className="position-absolute top-1 start-100 translate-middle badge rounded-pill bg-danger"
@@ -59,35 +58,22 @@ const AppNavbar = () => {
               )}
             </Nav.Link>
 
-            {/* Auth Options */}
+            {/* Auth Display */}
             {user ? (
-              <Dropdown align="end">
-                <Dropdown.Toggle
-                  variant="outline-light"
-                  size="sm"
-                  id="dropdown-user"
-                  className="d-flex align-items-center"
-                >
-                  Hi,{" "}
-                  {user.name.length > 12
-                    ? user.name.slice(0, 10) + "…"
-                    : user.name}
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                  <Dropdown.Item as={Link} to="/profile">
-                    My Profile
-                  </Dropdown.Item>
-                  <Dropdown.Divider />
-                  <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
+              <Nav.Link
+                as="span"
+                onClick={logout}
+                style={{ cursor: "pointer" }}
+              >
+                Hi,{" "}
+                {user.name.length > 12
+                  ? user.name.slice(0, 10) + "…"
+                  : user.name}
+              </Nav.Link>
             ) : (
-              <>
-                <Nav.Link as={Link} to="/login">
-                  Login
-                </Nav.Link>
-              </>
+              <Nav.Link as={Link} to="/login">
+                Login
+              </Nav.Link>
             )}
           </Nav>
         </Navbar.Collapse>
