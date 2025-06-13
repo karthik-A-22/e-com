@@ -11,7 +11,7 @@ const Home = () => {
   }, []);
 
   return (
-    <Container className="mt-3">
+    <Container className="mt-5 pt-5">
       {/* Product Cards */}
       <Row className="g-2">
         {products.map((product) => (

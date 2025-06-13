@@ -21,7 +21,7 @@ const Cart = () => {
 
   if (cartItems.length === 0) {
     return (
-      <Container className="py-5 text-center">
+      <Container className="mt-5 pt-5 py-5 text-center">
         <h2>Your cart is empty.</h2>
         <Link to="/">
           <Button variant="primary" className="mt-3">
@@ -33,7 +33,7 @@ const Cart = () => {
   }
 
   return (
-    <Container className="py-4">
+    <Container className="mt-5 pt-5">
       <Row>
         <Col xs={12} md={8}>
           <h2 className="mb-4">Your Cart</h2>

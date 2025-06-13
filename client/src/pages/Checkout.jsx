@@ -38,7 +38,7 @@ const Checkout = () => {
   };
 
   return (
-    <Container className="py-4">
+    <Container className="mt-5 pt-5 py-4">
       <Row>
         {/* Form Section */}
         <Col xs={12} md={6}>
