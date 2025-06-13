@@ -29,7 +29,7 @@ const ProductDetails = () => {
   const quantity = cartItem ? cartItem.quantity : 0;
 
   return (
-    <Container className="mt-4">
+    <Container fluid className="mt-5 pt-5">
       <Row className="align-items-start">
         {/* Image Section */}
         <Col xs={12} md={5} className="mb-4 mb-md-0">
