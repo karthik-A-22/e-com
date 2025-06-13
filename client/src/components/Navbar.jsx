@@ -1,4 +1,11 @@
-import { Navbar, Nav, Container, FormControl, Form } from "react-bootstrap";
+import {
+  Navbar,
+  Nav,
+  Container,
+  FormControl,
+  Form,
+  NavDropdown,
+} from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/CartContext";
 import { useAuth } from "../context/AuthContext";
@@ -122,16 +129,34 @@ const AppNavbar = () => {
 
               {/* Auth */}
               {user ? (
-                <Nav.Link
-                  as="span"
-                  onClick={logout}
-                  style={{ cursor: "pointer" }}
-                >
-                  Hi,{" "}
-                  {user.name.length > 12
-                    ? user.name.slice(0, 10) + "…"
-                    : user.name}
-                </Nav.Link>
+                <div className="position-relative">
+                  <NavDropdown
+                    title={
+                      <span>
+                        Hi,{" "}
+                        {user.name.length > 12
+                          ? user.name.slice(0, 10) + "…"
+                          : user.name}
+                      </span>
+                    }
+                    id="account-dropdown"
+                    align="end"
+                    menuVariant="dark"
+                    className="custom-account-dropdown"
+                  >
+                    <NavDropdown.Item as={Link} to="/orders">
+                      View Orders
+                    </NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/wishlist">
+                      Wishlist
+                    </NavDropdown.Item>
+                    <NavDropdown.Item as={Link} to="/addresses">
+                      Saved Addresses
+                    </NavDropdown.Item>
+                    <NavDropdown.Divider />
+                    <NavDropdown.Item onClick={logout}>Logout</NavDropdown.Item>
+                  </NavDropdown>
+                </div>
               ) : (
                 <Nav.Link as={Link} to="/login">
                   Login
@@ -141,7 +166,6 @@ const AppNavbar = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-
       <Offcanvas
         show={showSearchDrawer}
         onHide={() => setShowSearchDrawer(false)}

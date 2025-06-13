@@ -76,3 +76,23 @@
     padding: 0.25rem 0.5rem;
   }
 }
+/* AppNavbar.css */
+
+@media (max-width: 768px) {
+  .custom-account-dropdown .dropdown-menu {
+    position: absolute !important;
+    top: 100% !important;
+    left: auto !important;
+    right: 0 !important;
+    z-index: 1050 !important;
+    display: none;
+    min-width: 180px;
+    background-color: #222; /* matches dark navbar */
+    border: none;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .custom-account-dropdown.show .dropdown-menu {
+    display: block !important;
+  }
+}
