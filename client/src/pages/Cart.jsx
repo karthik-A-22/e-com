@@ -9,6 +9,7 @@ import {
   Image,
   Card,
 } from "react-bootstrap";
+import { useAuth } from "../context/AuthContext";
 
 const Cart = () => {
   const {
@@ -18,6 +19,8 @@ const Cart = () => {
     addToCart,
     decrementQuantity,
   } = useCart();
+
+  const { user } = useAuth();
 
   if (cartItems.length === 0) {
     return (
