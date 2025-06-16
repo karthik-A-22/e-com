@@ -11,7 +11,7 @@ connectDB();
 const app = express();
 app.use(
   cors({
-    origin: process.env.ORIGIN,
+    origin: [process.env.ORIGIN, process.env.ADMIN_ORIGIN],
     credentials: true, // if you're using cookies or sessions
   })
 );
