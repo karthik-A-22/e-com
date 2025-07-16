@@ -3,7 +3,12 @@ const Product = require("../models/Product");
 // Add new product (Admin only)
 exports.createProduct = async (req, res) => {
   try {
-    const product = new Product(req.body);
+    const imagePaths = req.files.map((file) => `/uploads/${file.filename}`);
+    const product = new Product({
+      ...req.body,
+      genre: JSON.parse(genre),
+      images: imagePaths,
+    });
     const saved = await product.save();
     res.status(201).json(saved);
   } catch (err) {
